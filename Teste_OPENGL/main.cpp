@@ -88,6 +88,7 @@ void Raycaster() {
     double m7 = 76.8;
     auto* material7 = new Material(ka7, kd7, ks7, m7);
 
+
     //Interação com a luz ambiente; '' com a luz difusa, '' com a luz (?), brilho
 
     // Objetos do Cenario ===============================================================================
@@ -133,8 +134,17 @@ void Raycaster() {
     Cone AbCorpo(1, 3, 1, Point(14, -10, -65), Point(0, 1, 0), *material6);
     AbCorpo.scaling(Point(1.0, 2.0, 1.0));
 
+
     Cylinder AbCabeca(2, 3, Point(14, -6, -65), Point(0, 1, 0), *material1);
     AbCabeca.scaling(Point(1.0, 0.8, 1.0));
+
+
+
+    // Montanha
+    Cone Topo(12, 20, 1, Point(-18, -15, -50), Point(0, 1, 0), *material4);
+    Cone Base(20, 20, 1, Point(-18, -21, -50), Point(0, 1, 0), *material5);
+
+
 
     // -------------------------------- Planta ----------------------------------------------------------
 
@@ -169,12 +179,14 @@ void Raycaster() {
     cenario->addShape(&Parede2);
     cenario->addShape(&Chao);
 
+    /*
     cenario->addShape(&CamaPe1);
     cenario->addShape(&CamaPe2);
     cenario->addShape(&CamaPe3);
     cenario->addShape(&CamaPe4);
     cenario->addShape(&CamaP1);
     cenario->addShape(&CamaP2);
+    */
 
     cenario->addShape(&MesaPe1);
     cenario->addShape(&MesaPe2);
@@ -182,8 +194,12 @@ void Raycaster() {
     cenario->addShape(&MesaPe4);
     cenario->addShape(&MesaCima);
 
-    //cenario->addShape(&AbCorpo);
-    //cenario->addShape(&AbCabeca);
+    cenario->addShape(&AbCorpo);
+    cenario->addShape(&AbCabeca);
+
+    cenario->addShape(&Base);
+    cenario->addShape(&Topo);
+
 
     cenario->addShape(&PlantaC);
 

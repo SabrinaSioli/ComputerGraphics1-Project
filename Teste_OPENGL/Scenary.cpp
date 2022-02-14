@@ -71,7 +71,7 @@ void Scenary::rayCasting()
 
             Point rayDirection = Point(x, y, z);
 
-            Shape* obj;
+            Shape* obj = nullptr;
 
             for (int i = 0; i < this->shapes.size(); i++)
             {
