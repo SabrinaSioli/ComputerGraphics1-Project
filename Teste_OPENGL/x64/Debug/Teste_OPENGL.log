@@ -1,0 +1,39 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(510,5): warning MSB8028: O diretório intermediário (x64\Debug\) contém arquivos compartilhados de outro projeto (Teste_OPENGL.vcxproj). Isso pode levar a um comportamento incorreto de limpeza e recompilação.
+  axx.cpp
+  Camera.cpp
+  Cone.cpp
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(94,17): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(179,21): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(189,13): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(191,13): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(193,13): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(229,22): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(232,18): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(251,18): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cone.cpp(252,18): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+  Cube.cpp
+  Cylinder.cpp
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cylinder.cpp(190,17): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cylinder.cpp(197,36): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cylinder.cpp(202,13): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cylinder.cpp(204,20): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cylinder.cpp(223,32): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cylinder.cpp(233,32): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+  Lighting.cpp
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Lighting.cpp(63,20): warning C4244: 'return': conversão de 'double' para 'float', possível perda de dados
+  main.cpp
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\main.cpp(3,10): fatal error C1083: Não é possível abrir arquivo incluir: 'C:/Users/Matheus/Documents/Libs/Projeto 0/glut-3.7.6-bin/glut.h': No such file or directory
+  mirroring.cpp
+  rotation.cpp
+  scaling.cpp
+  Scenary.cpp
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Scenary.cpp(72,46): warning C4244: 'argumento': conversão de 'double' para 'const float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Scenary.cpp(72,43): warning C4244: 'argumento': conversão de 'double' para 'const float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Scenary.cpp(72,40): warning C4244: 'argumento': conversão de 'double' para 'const float', possível perda de dados
+  shearing.cpp
+  Sphere.cpp
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Sphere.cpp(57,29): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Sphere.cpp(58,29): warning C4244: 'inicializando': conversão de 'double' para 'float', possível perda de dados
+  translating.cpp
+  Gerando Código...
+C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Scenary.cpp(86): error C4703: variável de ponteiro local potencialmente não inicializada 'obj' usada
