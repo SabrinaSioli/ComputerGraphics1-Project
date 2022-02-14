@@ -91,6 +91,8 @@ void Raycaster() {
     //Interação com a luz ambiente; '' com a luz difusa, '' com a luz (?), brilho
 
     // Objetos do Cenario ===============================================================================
+    // // -------------------------------- Paredes e Chão --------------------------------------------------
+    Cylinder tronco(0.5, 2, Point(-18, -19, -68), Point(0, 1, 0), *material1);
     // -------------------------------- Paredes e Chão --------------------------------------------------
     Cube Parede1(40, { -20, -6, -50 }, *material3);
     Cube Parede2(40, { 0, -6, -70 }, *material3);
