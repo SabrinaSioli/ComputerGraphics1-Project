@@ -175,6 +175,26 @@ void Raycaster() {
     Cubo Chao(40, { 0, 0, -10 }, *material2);
     Cubo cubo(2, { 0, 0, 0 }, *material9);
 
+    //Cubo carroFrente(5, { 0, 5, 0 }, * material17);
+    Cubo carroTras(15, { 5, 5, 0 }, * material17);
+    Cubo carroCima(15, { 7.3, 9.5, 0 }, * material17);
+
+    carroTras.escalonamento({ 1, 0.3, 0.5 });
+    carroCima.escalonamento({ 0.7, 0.3, 0.5 });
+
+    /*Cubo carroMeio(5, {5, 5, 0}, * material17);
+    Cubo carroMeioCima(5, { 5, 10, 0 }, * material17);
+    Cubo carroFim(5, { 10, 5, 0 }, * material17);
+    Cubo carroFimCima(5, { 10, 10, 0 }, * material17);
+    */
+
+
+    Esfera roda1(1.7, { 0, 3, 0 }, * material3);
+    Esfera roda2(1.7, { 0, 3, 5 }, * material3);
+    Esfera roda3(1.7, { 10, 3, 0 }, * material3);
+    Esfera roda4(1.7, { 10, 3, 5 }, * material3);
+
+
     // scalling -> alterar o tamanho dos objetos
     // translating -> mover o objeto
     // rotate -> rotacionar o objeto
@@ -184,7 +204,7 @@ void Raycaster() {
     Chao.escalonamento(Ponto(1.0, 0.05, 1.0));
 
     // -------------------------------- Cama ------------------------------------------------------------
-    Cilindro CamaPe1(0.5, 2, Ponto(-18, -19, -68), Ponto(0, 1, 0), *material3); //tras
+    /*Cilindro CamaPe1(0.5, 2, Ponto(-18, -19, -68), Ponto(0, 1, 0), *material3); //tras
     Cilindro CamaPe2(0.5, 2, Ponto(-18, -19, -45), Ponto(0, 1, 0), *material3); //frente
     Cilindro CamaPe3(0.5, 2, Ponto(-4, -19, -68), Ponto(0, 1, 0), *material3);  //tras
     Cilindro CamaPe4(0.5, 2, Ponto(-4, -19, -45), Ponto(0, 1, 0), *material3);  //frente 
@@ -278,7 +298,7 @@ void Raycaster() {
     Cubo Sol(2, { -18.9998, -1, -45.5 }, *material10);
     Cubo Sl1(1, { -18.998, -1, -45.5 }, *material18);
     Sol.escalonamento(Ponto(0.1, 1.0, 1.0));
-    Sl1.escalonamento(Ponto(0.2, 0.8, 0.8));
+    Sl1.escalonamento(Ponto(0.2, 0.8, 0.8));*/
 
     // ==================================================================================================
     //                     R    G    B
@@ -288,7 +308,7 @@ void Raycaster() {
 
 
     //Posição, p/ onde a cam. esta olhando, UP vector
-    Camera cam1({ 0, 30, 20 }, { 0, 0, -10 }, { 0, 11, -10 }, -4, 5);
+    Camera cam1({ 0, 10, 20 }, { 10, 0, -10 }, { 0, 11, -10 }, -4, 5);
     Camera cam2({ -10, 0, 0 }, { 0, -20, -50 }, { -10, 1, 0 }, -4, 6);
     Camera cam3({ 35, 10, -20 }, { 0, -20, -50 }, { 35, 11, -20 }, -4, 5);
     Camera cam4({ 0, 50, -40 }, { 0, -20, -50 }, { 0, 51, -40 }, -4, 4);
@@ -305,7 +325,20 @@ void Raycaster() {
     cenario->addShape(&Chao);
     cenario->addShape(&cubo);
 
-    cenario->addShape(&CamaPe1);
+    cenario->addShape(&carroTras);
+    cenario->addShape(&carroCima);
+
+
+
+
+
+    cenario->addShape(&roda1);
+    cenario->addShape(&roda2);
+    cenario->addShape(&roda3);
+    cenario->addShape(&roda4);
+
+
+    /*cenario->addShape(&CamaPe1);
     cenario->addShape(&CamaPe2);
     cenario->addShape(&CamaPe3);
     cenario->addShape(&CamaPe4);
@@ -343,7 +376,7 @@ void Raycaster() {
     cenario->addShape(&Cacto3);
     cenario->addShape(&Abaporu);
     cenario->addShape(&Sol);
-    cenario->addShape(&Sl1);
+    cenario->addShape(&Sl1);*/
 
     cenario->setCamera(cam1);
 

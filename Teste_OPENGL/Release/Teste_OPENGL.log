@@ -1,9 +1,9 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(510,5): warning MSB8028: O diretório intermediário (Release\) contém arquivos compartilhados de outro projeto (Teste_OPENGL.vcxproj). Isso pode levar a um comportamento incorreto de limpeza e recompilação.
   main.cpp
-C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Teste_OPENGL\Cilindro.h(26,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
+G:\Estudos\CG-trabalho\ComputerGraphics1-Project-main\Teste_OPENGL\Cilindro.h(26,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
   Gerando código
-  1 of 1118 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  1 of 910 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    45 functions had inline decision re-evaluated but remain unchanged
+    29 functions had inline decision re-evaluated but remain unchanged
   Finalizada a geração de código
-  Teste_OPENGL.vcxproj -> C:\Users\Us\Documents\CG\ComputerGraphics1-Project\Release\ComputerGraphics1-Project.exe
+  Teste_OPENGL.vcxproj -> G:\Estudos\CG-trabalho\ComputerGraphics1-Project-main\Release\ComputerGraphics1-Project.exe
