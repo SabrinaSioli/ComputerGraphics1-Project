@@ -60,11 +60,12 @@ void Raycaster() {
     double m3 = 11.264;
     auto* material3 = new Material(ka3, kd3, ks3, m3);
 
+
     //Fosco
-    Point ka4 = { 0.5, 0.5, 0.5 };
-    Point kd4 = { 0.1, 0.1, 0.1 };
-    Point ks4 = { 0.774597, 0.774597, 0.774597 };
-    double m4 = 12.8;
+    Point ka4 = { 0.2, 0.5, 0.9 };
+    Point kd4 = { 0.1, 0.6, 0.9 };
+    Point ks4 = { 0.1, 0.7, 0.774597 };
+    double m4 = 5.8;
     auto* material4 = new Material(ka4, kd4, ks4, m4);
 
     //Bronze
@@ -105,10 +106,9 @@ void Raycaster() {
 
     // Objetos do Cenario ===============================================================================
     // // -------------------------------- Paredes e Chão --------------------------------------------------
-    Cylinder tronco(0.5, 2, Point(-18, -19, -68), Point(0, 1, 0), *material1);
     // -------------------------------- Paredes e Chão --------------------------------------------------
-    Cube Parede1(40, { -20, -6, -50 }, *material3);
-    Cube Parede2(40, { 0, -6, -70 }, *material3);
+    Cube Parede1(40, { -20, -6, -50 }, *material4);
+    Cube Parede2(40, { 0, -6, -70 }, *material4);
     Cube Chao(40, { 0, -20, -50 }, *material2);
 
     Parede1.Scalling(Point(0.05, 0.7, 1.0));
@@ -153,8 +153,15 @@ void Raycaster() {
 
 
     // Montanha
-    Cone Topo(12, 20, 1, Point(-18, -15, -50), Point(0, 1, 0), *material9);
-    Cone Base(20, 20, 1, Point(-18, -21, -50), Point(0, 1, 0), *material8);
+    Cone Topo(12, 20, 1, Point(1, -15, -50), Point(0, 1, 0), *material9);
+    Cone Base(20, 20, 1, Point(1, -20, -50), Point(0, 1, 0), *material8);
+
+
+    //Arvore
+    //float radius, Point center, Material mat);
+    Sphere folha(10, { 16, -20, -68 }, *material3);
+    Cylinder tronco(1, 15, Point(16, -20, -68), Point(0, 1, 0), *material1);
+
 
 
 
@@ -179,8 +186,7 @@ void Raycaster() {
     FarLighting frlight(0.7, 0.7, 0.7, Point(0, 0, -1));
 
     //Posição, p/ onde a cam esta olhando, UP vector
-    Camera cam({ 200, -10, 0 }, { 0, 0, -56 }, { 200, -9, 0 }, -4, 1.8);
-
+    Camera cam({ 200, -10, 0 }, { 3, -6, -50 }, { 200, -9, -0 }, -4, 1.8);
     Scenary* cenario = new Scenary();
 
     //cenario->addLight(&plight);
@@ -199,8 +205,8 @@ void Raycaster() {
     cenario->addShape(&CamaP1);
     cenario->addShape(&CamaP2);
     */
-
-    cenario->addShape(&MesaPe1);
+    
+    /*cenario->addShape(&MesaPe1);
     cenario->addShape(&MesaPe2);
     cenario->addShape(&MesaPe3);
     cenario->addShape(&MesaPe4);
@@ -208,9 +214,14 @@ void Raycaster() {
 
     cenario->addShape(&AbCorpo);
     cenario->addShape(&AbCabeca);
+    */
 
     cenario->addShape(&Base);
     cenario->addShape(&Topo);
+
+    cenario->addShape(&tronco);
+    cenario->addShape(&folha);
+
 
 
     cenario->addShape(&PlantaC);
