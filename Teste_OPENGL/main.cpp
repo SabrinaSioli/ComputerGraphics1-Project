@@ -61,8 +61,8 @@ void Raycaster() {
     auto* material3 = new Material(ka3, kd3, ks3, m3);
 
     //Fosco
-    Point ka4 = { 0.25, 0.25, 0.25 };
-    Point kd4 = { 0.4, 0.4, 0.4 };
+    Point ka4 = { 0.5, 0.5, 0.5 };
+    Point kd4 = { 0.1, 0.1, 0.1 };
     Point ks4 = { 0.774597, 0.774597, 0.774597 };
     double m4 = 12.8;
     auto* material4 = new Material(ka4, kd4, ks4, m4);
@@ -87,6 +87,18 @@ void Raycaster() {
     Point ks7 = { 0.727811, 0.626959, 0.626959 };
     double m7 = 76.8;
     auto* material7 = new Material(ka7, kd7, ks7, m7);
+
+    Point ka8 = { 0.5, 0.5, 0.5 };
+    Point kd8 = { 0.1, 0.1, 0.1 };
+    Point ks8 = { 0.774597, 0.774597, 0.774597 };
+    double m8 = 12.8;
+    auto* material8 = new Material(ka8, kd8, ks8, m8);
+
+    Point ka9 = { 0.8, 0.8, 0.8 };
+    Point kd9 = { 0.2, 0.2, 0.2 };
+    Point ks9 = { 0.774597, 0.774597, 0.774597 };
+    double m9 = 12.8;
+    auto* material9 = new Material(ka9, kd9, ks9, m9);
 
 
     //Interação com a luz ambiente; '' com a luz difusa, '' com a luz (?), brilho
@@ -141,8 +153,8 @@ void Raycaster() {
 
 
     // Montanha
-    Cone Topo(12, 20, 1, Point(-18, -15, -50), Point(0, 1, 0), *material4);
-    Cone Base(20, 20, 1, Point(-18, -21, -50), Point(0, 1, 0), *material5);
+    Cone Topo(12, 20, 1, Point(-18, -15, -50), Point(0, 1, 0), *material9);
+    Cone Base(20, 20, 1, Point(-18, -21, -50), Point(0, 1, 0), *material8);
 
 
 
