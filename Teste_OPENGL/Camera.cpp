@@ -1,8 +1,8 @@
 #include "Camera.h"
 
-//Camera::Camera(Point camera_pos, Point lookAt, Point viewUp, double gradeTam, double distGrade, int furos)
+//Camera::Camera(Ponto camera_pos, Ponto lookAt, Ponto viewUp, double gradeTam, double distGrade, int furos)
 //: coordCamera(camera_pos), lookAt(lookAt), viewUp(viewUp), qtdFuros(furos) {
-//	olho = Point(0, 0, 0);
+//	olho = Ponto(0, 0, 0);
 //
 //	kc = (camera_pos - lookAt).normalized();
 //	ic = kc.cross(viewUp - coordCamera).normalized();
@@ -20,14 +20,14 @@
 //		for (int k = 0; k < furos; ++k) {
 //			y = -gradeTam / 2 + deslocamento + k * deslocamento;
 //
-//			gradeCamera[k][j] = Point(x, y, z);
+//			gradeCamera[k][j] = Ponto(x, y, z);
 //		}
 //	}
 //}
 
 Camera::Camera() {};
 
-Camera::Camera(Point eye, Point lookAt, Point viewUp, int d, int plano_tamanho) : d(d), plano_tamanho(plano_tamanho) {
+Camera::Camera(Ponto eye, Ponto lookAt, Ponto viewUp, int d, int plano_tamanho) : d(d), plano_tamanho(plano_tamanho) {
     this->eye = eye;
     this->lookAt = lookAt;
     this->viewUp = viewUp;
@@ -44,14 +44,14 @@ Camera::Camera(Point eye, Point lookAt, Point viewUp, int d, int plano_tamanho) 
     this->j = (k.cross(i)).normalized();
 };
 
-Matriz Camera::worldToCamera()
+Matriz Camera::mundoToCamera()
 {
-    Matriz worldToCamera;
-    worldToCamera << i[0], i[1], i[2], -i.dot(eye),
+    Matriz mundoToCamera;
+    mundoToCamera << i[0], i[1], i[2], -i.dot(eye),
         j[0], j[1], j[2], -j.dot(eye),
         k[0], k[1], k[2], -k.dot(eye),
         0, 0, 0, 1;
-    return worldToCamera;
+    return mundoToCamera;
 };
 
 Matriz Camera::cameraToWorld() {
@@ -63,37 +63,37 @@ Matriz Camera::cameraToWorld() {
     return cameraToWorld;
 };
 
-void Camera::update() {
+void Camera::atualiza() {
     this->eye = eye;
     this->lookAt = lookAt;
     this->viewUp = viewUp;
 
-    Point k = (eye - lookAt).normalized();
+    Ponto k = (eye - lookAt).normalized();
 
-    Point i = (viewUp.cross(k)).normalized();
-    Point j = (k.cross(i)).normalized();
+    Ponto i = (viewUp.cross(k)).normalized();
+    Ponto j = (k.cross(i)).normalized();
 };
 
-void Camera::moveX(float x)
+void Camera::moverX(float x)
 {
     this->eye.x() += x;
-    update();
+    atualiza();
 };
 
-void Camera::moveY(float y)
+void Camera::moverY(float y)
 {
     this->eye.y() += y;
-    update();
+    atualiza();
 };
 
-void Camera::moveZ(float z)
+void Camera::moverZ(float z)
 {
     this->eye.z() += z;
-    update();
+    atualiza();
 };
 
-void Camera::moveTo(Point eye)
+void Camera::moverPara(Ponto eye)
 {
     this->eye = eye;
-    update();
+    atualiza();
 };

@@ -1,6 +1,6 @@
-#include "shearing.h"
+#include "shearing.h";
 
-//Returns a shearing matrix on the XZ plane in X direction
+//Returns a shearing matrix on the XZ plane in X direcao
 
 Matrix4f shearingXZtoX(float gamma)
 {
@@ -13,7 +13,7 @@ Matrix4f shearingXZtoX(float gamma)
     return shear;
 }
 
-//Returns a shearing matrix on the XZ plane in Y direction
+//Returns a shearing matrix on the XZ plane in Y direcao
 
 Matrix4f sheringXZtoY(float gamma)
 {
@@ -26,7 +26,7 @@ Matrix4f sheringXZtoY(float gamma)
     return shear;
 }
 
-//Returns a shearing matrix on the XZ plane in Z direction
+//Returns a shearing matrix on the XZ plane in Z direcao
 
 Matrix4f shearingXZtoZ(float gamma)
 {

@@ -1,6 +1,5 @@
-#include "translating.h"
 
-//Returns a scaling matrix
+#include "translating.h"
 
 Matrix4f translating(float sx, float sy, float sz) {
     Matrix4f translate;

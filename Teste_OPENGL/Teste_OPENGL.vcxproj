@@ -140,35 +140,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="axx.cpp" />
+    <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cone.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="Cylinder.cpp" />
-    <ClCompile Include="Lighting.cpp" />
+    <ClCompile Include="Cubo.cpp" />
+    <ClCompile Include="Cilindro.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mirroring.cpp" />
-    <ClCompile Include="rotation.cpp" />
-    <ClCompile Include="scaling.cpp" />
-    <ClCompile Include="Scenary.cpp" />
-    <ClCompile Include="shearing.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="translating.cpp" />
+    <ClCompile Include="Cenario.cpp" />
+    <ClCompile Include="Esfera.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="axx.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cone.h" />
-    <ClInclude Include="Cube.h" />
-    <ClInclude Include="Cylinder.h" />
-    <ClInclude Include="Lighting.h" />
-    <ClInclude Include="mirroring.h" />
-    <ClInclude Include="rotation.h" />
-    <ClInclude Include="scaling.h" />
-    <ClInclude Include="Scenary.h" />
-    <ClInclude Include="shearing.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="translating.h" />
+    <ClInclude Include="Cubo.h" />
+    <ClInclude Include="Cilindro.h" />
+    <ClInclude Include="Cenario.h" />
+    <ClInclude Include="Esfera.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

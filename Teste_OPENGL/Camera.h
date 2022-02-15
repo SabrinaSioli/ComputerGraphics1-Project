@@ -1,23 +1,23 @@
 #pragma once
-#include "axx.h"
+#include "Utils.h"
 
 class Camera {
 public:
-    Point eye;
-    Point lookAt;
-    Point viewUp;
-    Point k;
-    Point i;
-    Point j;
+    Ponto eye;
+    Ponto lookAt;
+    Ponto viewUp;
+    Ponto k;
+    Ponto i;
+    Ponto j;
     double d;
     double plano_tamanho;
     Camera();
-    Camera(Point eye, Point lookAt, Point viewUp, int d, int plano_tamanho);
-    Matriz worldToCamera();
+    Camera(Ponto eye, Ponto lookAt, Ponto viewUp, int d, int plano_tamanho);
+    Matriz mundoToCamera();
     Matriz cameraToWorld();
-    void update();
-    void moveX(float x);
-    void moveY(float y);
-    void moveZ(float z);
-    void moveTo(Point eye);
+    void atualiza();
+    void moverX(float x); //n sei se eu uso
+    void moverY(float y);
+    void moverZ(float z);
+    void moverPara(Ponto eye);
 };

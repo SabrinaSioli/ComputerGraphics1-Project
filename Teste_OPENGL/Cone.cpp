@@ -1,201 +1,200 @@
 #include "Cone.h"
 
 Cone::Cone() {};
-Cone::Cone(float radius, float height, float angle, Point center, Point axis, Material mat)
+Cone::Cone(float raio, float altura, Ponto centro, Ponto eixo, Material mat)
 {
-    this->radius = radius;
-    this->height = height;
-    this->angle = angle;
-    this->center = center;
-    this->axis = axis;
-    this->origin = center + axis * height;
+    this->raio = raio;
+    this->altura = altura;
+    this->centro = centro;
+    this->eixo = eixo;
+    this->origin = centro + eixo * altura;
     this->mat = mat;
 };
 
-//Utilizar Vertex
-void Cone::applyTransform(Matriz transform)
+//Utilizar Vertice
+void Cone::aplicarTransformacao(Matriz transform)
 {
-    Vertex cb = Vertex(this->center[0], this->center[1], this->center[2], 1);
+    Vertice cb = Vertice(this->centro[0], this->centro[1], this->centro[2], 1);
     cb = transform * cb;
-    this->center = Point(cb[0], cb[1], cb[2]);
+    this->centro = Ponto(cb[0], cb[1], cb[2]);
 
-    Vertex axisv = Vertex(this->axis[0], this->axis[1], this->axis[2], 1);
-    axisv = transform * axisv;
+    Vertice eixov = Vertice(this->eixo[0], this->eixo[1], this->eixo[2], 1);
+    eixov = transform * eixov;
 
-    this->origin = this->center + this->axis * this->height;
+    this->origin = this->centro + this->eixo * this->altura;
 };
-//Utilizar Vertex
-void Cone::setCameraCoordinates(Matriz worldToCamera)
+//Utilizar Vertice
+void Cone::coordenadasDeCamera(Matriz mundoToCamera)
 {
-    Vertex cb = Vertex(this->center[0], this->center[1], this->center[2], 1);
-    cb = worldToCamera * cb;
-    this->center = Point(cb[0], cb[1], cb[2]);
+    Vertice cb = Vertice(this->centro[0], this->centro[1], this->centro[2], 1);
+    cb = mundoToCamera * cb;
+    this->centro = Ponto(cb[0], cb[1], cb[2]);
 
-    Vertex axisv = Vertex(this->axis[0], this->axis[1], this->axis[2], 1);
-    axisv = worldToCamera * axisv;
+    Vertice eixov = Vertice(this->eixo[0], this->eixo[1], this->eixo[2], 1);
+    eixov = mundoToCamera * eixov;
 
-    this->origin = this->center + this->axis * this->height;
+    this->origin = this->centro + this->eixo * this->altura;
 };
-//Utilizar Vertex
-void Cone::setWorldCoordinates(Matriz cameraToWorld)
+//Utilizar Vertice
+void Cone::colocarCoordenadasDeMundo(Matriz cameraToWorld)
 {
-    Vertex cb = Vertex(this->center[0], this->center[1], this->center[2], 1);
+    Vertice cb = Vertice(this->centro[0], this->centro[1], this->centro[2], 1);
     cb = cameraToWorld * cb;
-    this->center = Point(cb[0], cb[1], cb[2]);
+    this->centro = Ponto(cb[0], cb[1], cb[2]);
 
-    Vertex axisv = Vertex(this->axis[0], this->axis[1], this->axis[2], 1);
-    axisv = cameraToWorld * axisv;
+    Vertice eixov = Vertice(this->eixo[0], this->eixo[1], this->eixo[2], 1);
+    eixov = cameraToWorld * eixov;
 
-    this->origin = this->center + this->axis * this->height;
+    this->origin = this->centro + this->eixo * this->altura;
 };
 
-Point Cone::planeIntersectBase(Point rayOrigin, Point rayDirection)
+Ponto Cone::planeIntersectBase(Ponto rayOrigin, Ponto rayDirection)
 {
-    Point v = this->center - rayOrigin;
-    float p = this->axis.dot(v);
-    float t = this->axis.dot(rayDirection);
+    Ponto v = this->centro - rayOrigin;
+    float p = this->eixo.dot(v);
+    float t = this->eixo.dot(rayDirection);
 
     if (t == 0)
     {
-        return Point(MAXFLOAT, MAXFLOAT, MAXFLOAT);
+        return Ponto(MAXFLOAT, MAXFLOAT, MAXFLOAT);
     }
     else
     {
         float s = p / t;
-        Point intersection = rayOrigin + rayDirection * s;
+        Ponto intersection = rayOrigin + rayDirection * s;
         intersection[3] = 1;
         return intersection;
     }
 };
 
-bool Cone::validate(Point p, Point ray)
+bool Cone::valida(Ponto p, Ponto ray)
 {
-    Point aux = p - ray;
-    float s = aux.dot(this->axis);
+    Ponto aux = p - ray;
+    float s = aux.dot(this->eixo);
 
-    return ((s >= 0) && (s <= this->height));
+    return ((s >= 0) && (s <= this->altura));
 }
 
-Point Cone::base_intesection(Point rayOrigin, Point rayDirection)
+Ponto Cone::intersecao_base(Ponto rayOrigin, Ponto rayDirection)
 {
-    Point v = this->center - rayOrigin;
-    float p = this->axis.dot(v);
-    float t = this->axis.dot(rayDirection);
+    Ponto v = this->centro - rayOrigin;
+    float p = this->eixo.dot(v);
+    float t = this->eixo.dot(rayDirection);
 
     if (t == 0)
     {
-        return Point(MAXFLOAT, MAXFLOAT, MAXFLOAT);
+        return Ponto(MAXFLOAT, MAXFLOAT, MAXFLOAT);
     }
     else
     {
         float s = p / t;
-        Point intersection = rayOrigin + rayDirection * s;
+        Ponto intersection = rayOrigin + rayDirection * s;
 
-        float d = sqrt(pow(intersection[0] - this->center[0], 2) + pow(intersection[1] - this->center[1], 2) + pow(intersection[2] - this->center[2], 2));
+        float d = sqrt(pow(intersection[0] - this->centro[0], 2) + pow(intersection[1] - this->centro[1], 2) + pow(intersection[2] - this->centro[2], 2));
 
-        if (d <= this->radius)
+        if (d <= this->raio)
         {
             return intersection;
         }
         else
         {
-            return Point(MAXFLOAT, MAXFLOAT, MAXFLOAT);
+            return Ponto(MAXFLOAT, MAXFLOAT, MAXFLOAT);
         }
     }
 
 
 }
 
-void Cone::scaling(Point scale) // 0, 1, 1
+void Cone::escalonamento(Ponto escalonamento) // 0, 1, 1
 {
-    this->radius *= scale[0];
-    this->height *= scale[1];
-    this->origin = this->center + this->axis * this->height;
+    this->raio *= escalonamento[0];
+    this->altura *= escalonamento[1];
+    this->origin = this->centro + this->eixo * this->altura;
 };
 
-void Cone::rotate(Matriz rotate)
+void Cone::rotacao(Matriz rotacao)
 {
-    this->center = VertexToPoint(rotate * PointToVertex(this->center));
-    this->axis = VertexToPoint(rotate * PointToVertex(this->axis));
-    this->origin = VertexToPoint(rotate * PointToVertex(this->origin));
+    this->centro = VerticeToPonto(rotacao * PontoToVertice(this->centro));
+    this->eixo = VerticeToPonto(rotacao * PontoToVertice(this->eixo));
+    this->origin = VerticeToPonto(rotacao * PontoToVertice(this->origin));
 }
 
-void Cone::translating(Point translate)
+void Cone::translacao(Ponto translacao)
 {
-    this->center += translate;
-    //this->axis   += translate;
-    this->origin += translate;
+    this->centro += translacao;
+    //this->eixo   += translacao;
+    this->origin += translacao;
 }
 
-//Point* Cone::Bounds()
+//Ponto* Cone::Bounds()
 //{
-//    Point max_bounds = this->center + this->height * this->axis;
-//    Point min_bounds = this->center - this->height * this->axis;
+//    Ponto max_bounds = this->centro + this->altura * this->eixo;
+//    Ponto min_bounds = this->centro - this->altura * this->eixo;
 //
-//    Point p = Point(1, 0, 0);
+//    Ponto p = Ponto(1, 0, 0);
 //
-//    if (this->axis[1] != 1)
+//    if (this->eixo[1] != 1)
 //    {
-//        p = this->axis * Point(0, 1, 0);
+//        p = this->eixo * Ponto(0, 1, 0);
 //    }
-//    Point p2 = (this->axis).cross(p);
+//    Ponto p2 = (this->eixo).cross(p);
 //
 //    for (int i = 0; i < 4; i++)
 //    {
-//        if (this->center[0] > max_bounds[0])
+//        if (this->centro[0] > max_bounds[0])
 //        {
-//            max_bounds[0] = this->center[0];
+//            max_bounds[0] = this->centro[0];
 //        }
-//        if (this->center[0] < min_bounds[0])
+//        if (this->centro[0] < min_bounds[0])
 //        {
-//            min_bounds[0] = this->center[0];
+//            min_bounds[0] = this->centro[0];
 //        }
-//        if (this->center[1] > max_bounds[1])
+//        if (this->centro[1] > max_bounds[1])
 //        {
-//            max_bounds[1] = this->center[1];
+//            max_bounds[1] = this->centro[1];
 //        }
-//        if (this->center[1] < min_bounds[1])
+//        if (this->centro[1] < min_bounds[1])
 //        {
-//            min_bounds[1] = this->center[1];
+//            min_bounds[1] = this->centro[1];
 //        }
-//        if (this->center[2] > max_bounds[2])
+//        if (this->centro[2] > max_bounds[2])
 //        {
-//            max_bounds[2] = this->center[2];
+//            max_bounds[2] = this->centro[2];
 //        }
-//        if (this->center[2] < min_bounds[2])
+//        if (this->centro[2] < min_bounds[2])
 //        {
-//            min_bounds[2] = this->center[2];
+//            min_bounds[2] = this->centro[2];
 //        }
 //
 //        p = p2;
-//        p2 = (this->axis).cross(p);
+//        p2 = (this->eixo).cross(p);
 //    }
 //
-//    return new Point(min_bounds, max_bounds);
+//    return new Ponto(min_bounds, max_bounds);
 //}
 
-Point Cone::rayIntersect(Point rayOrigin, Point rayDirection)
+Ponto Cone::rayIntersect(Ponto rayOrigin, Ponto rayDirection)
 {
-    float cos_theta = this->height / sqrt(pow(this->height, 2) + pow(this->radius, 2));
+    float cos_theta = this->altura / sqrt(pow(this->altura, 2) + pow(this->raio, 2));
 
-    Point normal_aux = this->axis * this->height;
+    Ponto normal_aux = this->eixo * this->altura;
 
-    Point vertex = this->center + normal_aux;
+    Ponto Vertice = this->centro + normal_aux;
 
-    Point d = rayDirection.normalized();
+    Ponto d = rayDirection.normalized();
 
-    Point v = vertex - rayOrigin;
+    Ponto v = Vertice - rayOrigin;
 
-    float a = pow(d.dot(this->axis), 2) - (d.dot(d) * pow(cos_theta, 2));
+    float a = pow(d.dot(this->eixo), 2) - (d.dot(d) * pow(cos_theta, 2));
 
-    float b = d.dot(v) * pow(cos_theta, 2) - ((d.dot(this->axis) * v.dot(this->axis)));
+    float b = d.dot(v) * pow(cos_theta, 2) - ((d.dot(this->eixo) * v.dot(this->eixo)));
 
-    float c = pow(v.dot(this->axis), 2) - (pow(cos_theta, 2) * v.dot(v));
+    float c = pow(v.dot(this->eixo), 2) - (pow(cos_theta, 2) * v.dot(v));
 
     float delta = b * b - (a * c);
 
     float t1, t2;
-    Point pi = Point(MAXFLOAT, MAXFLOAT, MAXFLOAT);
+    Ponto pi = Ponto(MAXFLOAT, MAXFLOAT, MAXFLOAT);
 
     if (delta > 0)
     {
@@ -210,11 +209,11 @@ Point Cone::rayIntersect(Point rayOrigin, Point rayDirection)
             t2 = -c / (2 * b);
         }
 
-        Point p1 = rayOrigin + d * t1;
-        Point p2 = rayOrigin + d * t2;
+        Ponto p1 = rayOrigin + d * t1;
+        Ponto p2 = rayOrigin + d * t2;
 
-        Point bi = base_intesection(rayOrigin, d);
-        if (validate(this->origin, p1))
+        Ponto bi = intersecao_base(rayOrigin, d);
+        if (valida(this->origin, p1))
         {
             pi = p1;
         }
@@ -230,7 +229,7 @@ Point Cone::rayIntersect(Point rayOrigin, Point rayDirection)
         }
 
         float d2 = sqrt(pow(p2[0] - rayOrigin[0], 2) + pow(p2[1] - rayOrigin[1], 2) + pow(p2[2] - rayOrigin[2], 2));
-        if (validate(this->origin, p2))
+        if (valida(this->origin, p2))
         {
             if (!(pi[0] < MAXFLOAT) || d2 < d1)
             {
@@ -246,11 +245,11 @@ Point Cone::rayIntersect(Point rayOrigin, Point rayDirection)
     else if (delta == 0 && b != 0 && a != 0)
     {
         t1 = -b + sqrt(delta) / a;
-        Point p1 = rayOrigin + d * t1;
-        Point bi = base_intesection(rayOrigin, d);
+        Ponto p1 = rayOrigin + d * t1;
+        Ponto bi = intersecao_base(rayOrigin, d);
         float db = sqrt(pow(bi[0] - rayOrigin[0], 2) + pow(bi[1] - rayOrigin[1], 2) + pow(bi[2] - rayOrigin[2], 2));
         float dp = sqrt(pow(p1[0] - rayOrigin[0], 2) + pow(p1[1] - rayOrigin[1], 2) + pow(p1[2] - rayOrigin[2], 2));
-        if (validate(this->origin, p1))
+        if (valida(this->origin, p1))
         {
             pi = p1;
         }
@@ -262,20 +261,20 @@ Point Cone::rayIntersect(Point rayOrigin, Point rayDirection)
     return pi;
 };
 
-Point Cone::normal(Point point)
+Ponto Cone::normal(Ponto ponto)
 {
-    Point v = this->height * this->axis;
-    Point n = this->center + v;
-    Point a = point - this->center;
+    Ponto v = this->altura * this->eixo;
+    Ponto n = this->centro + v;
+    Ponto a = ponto - this->centro;
 
-    float f = a.dot(this->axis);
-    Point p = this->center + f * this->axis;
+    float f = a.dot(this->eixo);
+    Ponto p = this->centro + f * this->eixo;
 
-    Point a2 = point - p;
-    Point a3 = n - point;
+    Ponto a2 = ponto - p;
+    Ponto a3 = n - ponto;
 
-    Point T = a2.cross(a3);
-    Point N = (a3.cross(T)).normalized();
+    Ponto T = a2.cross(a3);
+    Ponto N = (a3.cross(T)).normalized();
 
     return N;
 
