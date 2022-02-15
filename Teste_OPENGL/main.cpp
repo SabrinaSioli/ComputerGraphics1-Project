@@ -170,10 +170,16 @@ void Raycaster() {
 
     // Objetos do Cenario ===============================================================================
     // -------------------------------- Paredes e Chão --------------------------------------------------
-    Cubo Parede1(40, { -20, -6, -50 }, *material1);
-    Cubo Parede2(40, { 0, -6, -70 }, *material1);
-    Cubo Chao(40, { 0, 0, -10 }, *material2);
-    Cubo cubo(2, { 0, 0, 0 }, *material9);
+    Cubo Parede1(40, { -20, 14, -10 }, * material3);
+    Cubo Parede2(40, { 0, 14, -30 }, * material12);
+    Cubo Chao(40, { 0, 0, -10 }, * material4);
+
+    Camera cam1({ 0, 20, 40 }, { 0, 0, -10 }, { 0, 21, 40 }, -4, 8); // frente
+    Camera cam2({ 45, 20, 10 }, { 0, 0, -10 }, { 45, 21, 10 }, -4, 8); //  direita
+    Camera cam3({ 35, 10, -20 }, { 0, -20, -50 }, { 35, 11, -20 }, -4, 5); // esquerda
+    Camera cam4({ 0, 50, -40 }, { 0, -20, -50 }, { 0, 51, -40 }, -4, 4); // cima
+    Camera camAux({ -11, 0, -56.5 }, { 14, -15, -65 }, { -11, 1, -56.5 }, -4, 4);
+    Camera camPaint({ 60, 0, -50 }, { -19, -3, -45.5 }, { 60, 1, -50 }, -8, 2);
 
     //Cubo carroFrente(5, { 0, 5, 0 }, * material17);
     Cubo carroTras(15, { 5, 5, 0 }, * material17);
@@ -189,10 +195,10 @@ void Raycaster() {
     */
 
 
-    Esfera roda1(1.7, { 0, 3, 0 }, * material3);
-    Esfera roda2(1.7, { 0, 3, 5 }, * material3);
-    Esfera roda3(1.7, { 10, 3, 0 }, * material3);
-    Esfera roda4(1.7, { 10, 3, 5 }, * material3);
+    Esfera roda1(1.7, { 0, 3, -3.5 }, * material3);
+    Esfera roda2(1.7, { 0, 3, 4.5 }, * material3);
+    Esfera roda3(1.7, { 10, 3, -3.5 }, * material3);
+    Esfera roda4(1.7, { 10, 3, 4.5 }, * material3);
 
 
     // scalling -> alterar o tamanho dos objetos
@@ -308,12 +314,12 @@ void Raycaster() {
 
 
     //Posição, p/ onde a cam. esta olhando, UP vector
-    Camera cam1({ 0, 10, 20 }, { 10, 0, -10 }, { 0, 11, -10 }, -4, 5);
+    /*Camera cam1({0, 10, 20}, {10, 0, -10}, {0, 11, -10}, -4, 5);
     Camera cam2({ -10, 0, 0 }, { 0, -20, -50 }, { -10, 1, 0 }, -4, 6);
     Camera cam3({ 35, 10, -20 }, { 0, -20, -50 }, { 35, 11, -20 }, -4, 5);
     Camera cam4({ 0, 50, -40 }, { 0, -20, -50 }, { 0, 51, -40 }, -4, 4);
     Camera camAux({ -11, 0, -56.5 }, { 14, -15, -65 }, { -11, 1, -56.5 }, -4, 4);
-    Camera camPaint({ 60, 0, -50 }, { -19, -3, -45.5 }, { 60, 1, -50 }, -8, 2);
+    Camera camPaint({ 60, 0, -50 }, { -19, -3, -45.5 }, { 60, 1, -50 }, -8, 2);*/
 
     Cenario* cenario = new Cenario();
 
@@ -323,7 +329,6 @@ void Raycaster() {
     cenario->addShape(&Parede1);
     cenario->addShape(&Parede2);
     cenario->addShape(&Chao);
-    cenario->addShape(&cubo);
 
     cenario->addShape(&carroTras);
     cenario->addShape(&carroCima);
@@ -378,7 +383,7 @@ void Raycaster() {
     cenario->addShape(&Sol);
     cenario->addShape(&Sl1);*/
 
-    cenario->setCamera(cam1);
+    cenario->setCamera(cam2);
 
     cenario->rayCasting();
 
