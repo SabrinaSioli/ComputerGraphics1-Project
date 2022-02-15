@@ -40,10 +40,10 @@ void Raycaster() {
     double met1 = 0;
     auto* material1 = new Material(La1, Ld1, Ls1, met1);
 
-    // Vermelho vinho ----------------------------------------
-    Ponto La2 = { 0.894, 0.8, 0.705 };
-    Ponto Ld2 = { 0.894, 0.8, 0.705 };
-    Ponto Ls2 = { 0.894, 0.8, 0.705 };
+    // Cinza roda ----------------------------------------
+    Ponto La2 = { 0.458, 0.450, 0.549 };
+    Ponto Ld2 = { 0.458, 0.450, 0.549 };
+    Ponto Ls2 = { 0.458, 0.450, 0.549 };
     double met2 = 100;
     auto* material2 = new Material(La2, Ld2, Ls2, met2);
 
@@ -104,10 +104,10 @@ void Raycaster() {
     double met10 = 50;
     auto* material10 = new Material(La10, Ld10, Ls10, met10);
 
-    // Barro -------------------------------------------------
-    Ponto La11 = { 0.294, 0.078, 0.047 };
-    Ponto Ld11 = { 0.294, 0.078, 0.047 };
-    Ponto Ls11 = { 0.294, 0.078, 0.047 };
+    // Vermelho cilindro -------------------------------------------------
+    Ponto La11 = { 0.921, 0.298, 0.298 };
+    Ponto Ld11 = { 0.921, 0.298, 0.298 };
+    Ponto Ls11 = { 0.921, 0.298, 0.298 };
     double met11 = 50;
     auto* material11 = new Material(La11, Ld11, Ls11, met11);
 
@@ -181,24 +181,24 @@ void Raycaster() {
     Camera camAux({ -11, 0, -56.5 }, { 14, -15, -65 }, { -11, 1, -56.5 }, -4, 4);
     Camera camPaint({ 60, 0, -50 }, { -19, -3, -45.5 }, { 60, 1, -50 }, -8, 2);
 
-    //Cubo carroFrente(5, { 0, 5, 0 }, * material17);
     Cubo carroTras(15, { 5, 5, 0 }, * material17);
     Cubo carroCima(15, { 7.3, 9.5, 0 }, * material17);
 
     carroTras.escalonamento({ 1, 0.3, 0.5 });
     carroCima.escalonamento({ 0.7, 0.3, 0.5 });
 
-    /*Cubo carroMeio(5, {5, 5, 0}, * material17);
-    Cubo carroMeioCima(5, { 5, 10, 0 }, * material17);
-    Cubo carroFim(5, { 10, 5, 0 }, * material17);
-    Cubo carroFimCima(5, { 10, 10, 0 }, * material17);
-    */
+    Esfera roda1(1.7, { 0, 3, -3.5 }, * material2);
+    Esfera roda2(1.7, { 0, 3, 4.5 }, * material2);
+    Esfera roda3(1.7, { 10, 3, -3.5 }, * material2);
+    Esfera roda4(1.7, { 10, 3, 4.5 }, * material2);
+    //(float raio, float altura, Ponto centro_base, Ponto eixo, Material mat)
 
+    Cone cone2(1, 3, { 14, 2, 0 }, { 0, 1, 0 }, * material9);
 
-    Esfera roda1(1.7, { 0, 3, -3.5 }, * material3);
-    Esfera roda2(1.7, { 0, 3, 4.5 }, * material3);
-    Esfera roda3(1.7, { 10, 3, -3.5 }, * material3);
-    Esfera roda4(1.7, { 10, 3, 4.5 }, * material3);
+    Cubo baseMesa(10, { 10, 6, -20 }, * material5);
+    baseMesa.escalonamento({ 1, 0.2, 0.5 });
+    Cilindro apoio1(1, 2, { 10, 2, -20 }, { 0, 1, 0 }, * material11);
+    Cilindro apoio2(1, 2, { 5, 2, -20 }, { 0, 1, 0 }, * material11);
 
 
     // scalling -> alterar o tamanho dos objetos
@@ -333,7 +333,12 @@ void Raycaster() {
     cenario->addShape(&carroTras);
     cenario->addShape(&carroCima);
 
+    cenario->addShape(&apoio1);
+    cenario->addShape(&apoio2);
 
+    cenario->addShape(&baseMesa);
+
+    cenario->addShape(&cone2);
 
 
 
