@@ -172,7 +172,7 @@ void Raycaster() {
     // -------------------------------- Paredes e Chão --------------------------------------------------
     Cubo Parede1(40, { -20, -6, -50 }, *material1);
     Cubo Parede2(40, { 0, -6, -70 }, *material1);
-    Cubo Chao(40, { 0, -20, -50 }, *material2);
+    Cubo Chao(40, { 0, 0, -10 }, *material2);
     Cubo cubo(2, { 0, 0, 0 }, *material9);
 
     // scalling -> alterar o tamanho dos objetos
@@ -288,7 +288,7 @@ void Raycaster() {
 
 
     //Posição, p/ onde a cam. esta olhando, UP vector
-    Camera cam1({ 0, 20, -40 }, { 0, -20, -50 }, { 0, 21, -40 }, -4, 5);
+    Camera cam1({ 0, 30, 20 }, { 0, 0, -10 }, { 0, 11, -10 }, -4, 5);
     Camera cam2({ -10, 0, 0 }, { 0, -20, -50 }, { -10, 1, 0 }, -4, 6);
     Camera cam3({ 35, 10, -20 }, { 0, -20, -50 }, { 35, 11, -20 }, -4, 5);
     Camera cam4({ 0, 50, -40 }, { 0, -20, -50 }, { 0, 51, -40 }, -4, 4);
